@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @since 30/05/2021
  */
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class EmailAlreadyInUseException extends RuntimeException {
-  public EmailAlreadyInUseException(String message) {
+public class EmailAlreadyUsedException extends RuntimeException {
+  public EmailAlreadyUsedException(String message) {
     super(message);
   }
 }
