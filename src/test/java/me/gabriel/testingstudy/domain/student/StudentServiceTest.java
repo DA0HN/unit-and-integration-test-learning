@@ -48,7 +48,7 @@ class StudentServiceTest {
 
     sut.create(student);
 
-    verify(studentRepository, times(1)).isEmailAlreadyRegistered(anyString());
+    verify(studentRepository, times(1)).isEmailAlreadyInUse(anyString());
     verify(studentRepository, times(1)).save(student);
   }
 
@@ -57,14 +57,14 @@ class StudentServiceTest {
 
     var student = makeStudent();
 
-    when(studentRepository.isEmailAlreadyRegistered(anyString())).thenReturn(true);
+    when(studentRepository.isEmailAlreadyInUse(anyString())).thenReturn(true);
 
     assertThrows(
       EmailAlreadyInUseException.class,
       () -> sut.create(student)
     );
 
-    verify(studentRepository, times(1)).isEmailAlreadyRegistered(anyString());
+    verify(studentRepository, times(1)).isEmailAlreadyInUse(anyString());
     verify(studentRepository, never()).save(any(Student.class));
   }
 

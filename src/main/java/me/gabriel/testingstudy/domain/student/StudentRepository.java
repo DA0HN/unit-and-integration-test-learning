@@ -21,6 +21,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
              FROM Student student
              WHERE student.email = :email
          """)
-  Boolean isEmailAlreadyRegistered(String email);
+  Boolean isEmailAlreadyInUse(String email);
 
 }

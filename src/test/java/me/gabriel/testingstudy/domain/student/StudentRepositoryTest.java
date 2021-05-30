@@ -31,7 +31,7 @@ class StudentRepositoryTest {
 
     sut.save(student);
 
-    var isEmailRegistered = sut.isEmailAlreadyRegistered(student.getEmail());
+    var isEmailRegistered = sut.isEmailAlreadyInUse(student.getEmail());
 
     assertThat(isEmailRegistered).isTrue();
   }
@@ -41,7 +41,7 @@ class StudentRepositoryTest {
 
     var student = makeStudent();
 
-    var isEmailRegistered = sut.isEmailAlreadyRegistered(student.getEmail());
+    var isEmailRegistered = sut.isEmailAlreadyInUse(student.getEmail());
 
     assertThat(isEmailRegistered).isFalse();
   }

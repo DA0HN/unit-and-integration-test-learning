@@ -18,15 +18,14 @@ public class StudentServiceImpl implements StudentService {
 
   private final StudentRepository repository;
 
-
   @Override public List<Student> findAll() {
     return repository.findAll();
   }
 
   @Override public void create(Student student) throws EmailAlreadyInUseException {
-    var emailExists = repository.isEmailAlreadyRegistered(student.getEmail());
+    var isEmailInUse = repository.isEmailAlreadyInUse(student.getEmail());
 
-    if(emailExists) {
+    if(isEmailInUse) {
       throw new EmailAlreadyInUseException("Email " + student.getEmail() + " already in use.");
     }
 
@@ -34,6 +33,7 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override public void deleteById(Long id) throws StudentNotFoundException {
+
     if(!repository.existsById(id)) {
       throw new StudentNotFoundException("Student with id " + id + " does not exists");
     }
