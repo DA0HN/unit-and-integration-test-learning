@@ -11,16 +11,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-
-  @Query("""
-             SELECT
-                  CASE
-                      WHEN COUNT(student) > 0 THEN true
-                      ELSE false
-                  END AS isRegistered
-             FROM Student student
-             WHERE student.email = :email
-         """)
+  @Query("SELECT " +
+         "  CASE " +
+         "    WHEN COUNT(student) > 0 THEN true " +
+         "    ELSE false " +
+         "  END AS isRegistered " +
+         "FROM Student student " +
+         "WHERE student.email = :email"
+  )
   Boolean isEmailAlreadyInUse(String email);
 
 }
