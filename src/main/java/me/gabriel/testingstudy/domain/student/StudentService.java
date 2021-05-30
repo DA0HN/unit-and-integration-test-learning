@@ -2,7 +2,7 @@ package me.gabriel.testingstudy.domain.student;
 
 import lombok.AllArgsConstructor;
 import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException;
-import me.gabriel.testingstudy.exception.EmailAlreadyInUseException;
+import me.gabriel.testingstudy.domain.student.exception.EmailAlreadyInUseException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

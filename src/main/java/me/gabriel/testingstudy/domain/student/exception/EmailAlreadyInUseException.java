@@ -1,4 +1,4 @@
-package me.gabriel.testingstudy.exception;
+package me.gabriel.testingstudy.domain.student.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
