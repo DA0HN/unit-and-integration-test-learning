@@ -24,8 +24,12 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override public void create(Student student) {
-    repository.findByEmail(student.getEmail())
-      .orElseThrow(() -> new EmailAlreadyUsedException("Email " + student.getEmail() + " already in use."));
+    var emailExists = repository.isEmailAlreadyRegistered(student.getEmail());
+
+    if(emailExists) {
+      throw new EmailAlreadyUsedException("Email " + student.getEmail() + " already in use.");
+    }
+
     repository.save(student);
   }
 

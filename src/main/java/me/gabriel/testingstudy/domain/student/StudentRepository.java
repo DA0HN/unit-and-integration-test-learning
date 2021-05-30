@@ -1,8 +1,7 @@
 package me.gabriel.testingstudy.domain.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * Created by daohn on 30/05/2021
@@ -11,6 +10,11 @@ import java.util.Optional;
  */
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-  Optional<Student> findByEmail(String email);
+  @Query("""
+           SELECT CASE WHEN COUNT(student) > 0 THEN true ELSE false END
+           FROM Student student
+           WHERE student.email = :email
+         """)
+  Boolean isEmailAlreadyRegistered(String email);
 
 }
