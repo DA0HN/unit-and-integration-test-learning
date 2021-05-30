@@ -35,5 +35,19 @@ class StudentRepositoryTest {
 
     assertThat(isEmailRegistered).isTrue();
   }
+
+  @Test
+  void itShouldCheckIfStudentEmailIsNotRegistered() {
+
+    var student = new Student(
+      "name",
+      "email@email.com",
+      Gender.OTHER
+    );
+
+    var isEmailRegistered = sut.isEmailAlreadyRegistered(student.getEmail());
+
+    assertThat(isEmailRegistered).isFalse();
+  }
 }
 
