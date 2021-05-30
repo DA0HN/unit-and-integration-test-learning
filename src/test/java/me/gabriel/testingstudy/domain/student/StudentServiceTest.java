@@ -1,6 +1,6 @@
 package me.gabriel.testingstudy.domain.student;
 
-import me.gabriel.testingstudy.domain.student.exception.EmailAlreadyUsedException;
+import me.gabriel.testingstudy.domain.student.exception.EmailAlreadyInUseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,14 +52,14 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenStudentHasRegisteredEmailShouldThrowEmailAlreadyUsedException() {
+  void whenStudentHasRegisteredEmailShouldThrowEmailAlreadyInUseException() {
 
     var student = makeStudent();
 
     when(studentRepository.isEmailAlreadyRegistered(anyString())).thenReturn(true);
 
     assertThrows(
-      EmailAlreadyUsedException.class,
+      EmailAlreadyInUseException.class,
       () -> sut.create(student)
     );
 
