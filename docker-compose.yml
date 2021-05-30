@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  database:
+    container_name: db-student
+    image: me.gabriel/testing-study
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db-student
+    ports:
+      - '35435:5432'
+    volumes:
+      - db-student-volume:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - db-student-network
+networks:
+  db-student-network:
+    driver: bridge
+volumes:
+  db-student-volume:
+    external: true
