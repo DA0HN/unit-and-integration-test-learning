@@ -48,6 +48,7 @@ class StudentServiceTest {
 
     sut.create(student);
 
+    verify(studentRepository, times(1)).isEmailAlreadyRegistered(anyString());
     verify(studentRepository, times(1)).save(student);
   }
 
