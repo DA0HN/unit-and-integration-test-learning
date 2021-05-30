@@ -2,7 +2,7 @@ package me.gabriel.testingstudy.domain.student;
 
 import lombok.AllArgsConstructor;
 import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException;
-import me.gabriel.testingstudy.exception.BadRequestException;
+import me.gabriel.testingstudy.exception.EmailAlreadyInUseException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class StudentService {
 
   public void create(Student student) {
     repository.findByEmail(student.getEmail())
-      .orElseThrow(() -> new BadRequestException("Email " + student.getEmail() + " already in use."));
+      .orElseThrow(() -> new EmailAlreadyInUseException("Email " + student.getEmail() + " already in use."));
     repository.save(student);
   }
 
