@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static me.gabriel.testingstudy.domain.student.StudentFactory.makeStudent;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -36,7 +37,12 @@ class StudentServiceTest {
   }
 
   @Test
-  void create() {
+  void whenStudentHasNotRegisteredEmailShouldSave() {
+    var student = makeStudent();
+
+    sut.create(student);
+
+    verify(studentRepository, times(1)).save(student);
   }
 
   @Test
