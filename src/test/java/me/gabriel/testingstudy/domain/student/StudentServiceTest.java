@@ -29,7 +29,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void canFindAll() {
+  void whenThereAreSavedStudentsShouldFindAll() {
 
     sut.findAll();
 
@@ -37,7 +37,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenStudentHasNotRegisteredEmailShouldSave() {
+  void whenStudentHasNotRegisteredEmailShouldCreate() {
     var student = makeStudent();
 
     sut.create(student);
