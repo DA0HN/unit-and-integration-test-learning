@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
     return repository.findAll();
   }
 
-  @Override public void create(Student student) {
+  @Override public void create(Student student) throws EmailAlreadyUsedException {
     var emailExists = repository.isEmailAlreadyRegistered(student.getEmail());
 
     if(emailExists) {
@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
     repository.save(student);
   }
 
-  @Override public void deleteById(Long id) {
+  @Override public void deleteById(Long id) throws StudentNotFoundException {
     if(!repository.existsById(id)) {
       throw new StudentNotFoundException("Student with id " + id + " does not exists");
     }

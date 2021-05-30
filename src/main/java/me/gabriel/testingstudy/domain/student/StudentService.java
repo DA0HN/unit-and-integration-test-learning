@@ -1,5 +1,8 @@
 package me.gabriel.testingstudy.domain.student;
 
+import me.gabriel.testingstudy.domain.student.exception.EmailAlreadyUsedException;
+import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException;
+
 import java.util.List;
 
 /**
@@ -9,6 +12,6 @@ import java.util.List;
  */
 public interface StudentService {
   List<Student> findAll();
-  void create(Student student);
-  void deleteById(Long id);
+  void create(Student student) throws EmailAlreadyUsedException;
+  void deleteById(Long id) throws StudentNotFoundException;
 }
