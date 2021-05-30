@@ -1,10 +1,10 @@
 package me.gabriel.testingstudy.domain.student;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -14,24 +14,17 @@ import static org.mockito.Mockito.verify;
  * @author daohn
  * @since 30/05/2021
  */
+@ExtendWith(MockitoExtension.class)
 class StudentServiceTest {
 
   @Mock
   private StudentRepository studentRepository;
 
-  private AutoCloseable autoCloseable;
-
   private StudentService sut;
 
   @BeforeEach
   void setUp() {
-    this.autoCloseable = MockitoAnnotations.openMocks(this);
     this.sut = new StudentServiceImpl(studentRepository);
-  }
-
-  @AfterEach
-  void tearDown() throws Exception {
-    autoCloseable.close();
   }
 
   @Test
