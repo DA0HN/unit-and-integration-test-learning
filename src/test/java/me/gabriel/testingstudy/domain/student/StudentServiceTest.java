@@ -28,6 +28,7 @@ class StudentServiceTest {
   private StudentRepository studentRepository;
 
   private StudentService sut;
+
   private static final Long ID_VALID = 1L;
   private static final Long ID_INVALID = -1L;
   private static final Long ID_NULL = null;
@@ -38,7 +39,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenThereAreRegisteredStudentsThenShouldListAll() {
+  void givenDatabaseWhenThereAreRegisteredStudentsThenShouldListAll() {
 
     sut.findAll();
 
@@ -46,7 +47,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenStudentDoesNotHaveRegisteredEmailThenShouldBeCreated() {
+  void givenStudentWhenHasUnregisteredEmailThenShouldBeCreated() {
     var student = makeStudent();
 
     when(studentRepository.isEmailAlreadyInUse(anyString())).thenReturn(false);
@@ -63,7 +64,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenStudentHasRegisteredEmailShouldThrowEmailAlreadyInUseException() {
+  void givenStudentWhenHaveRegisteredEmailThenShouldThrowEmailAlreadyInUseException() {
 
     var student = makeStudent();
 
@@ -79,7 +80,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenGivenIdIsValidThenShouldDeleteStudent() {
+  void givenStudentIdWhenIsValidThenShouldDeleteStudent() {
     when(studentRepository.existsById(ID_VALID)).thenReturn(true);
 
     sut.deleteById(ID_VALID);
@@ -89,7 +90,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenGivenIdIsNotValidThenShouldThrowStudentNotFoundException() {
+  void givenStudentIdWhenIsNotValidThenShouldThrowStudentNotFoundException() {
 
     when(studentRepository.existsById(ID_INVALID)).thenReturn(false);
 
@@ -104,7 +105,7 @@ class StudentServiceTest {
   }
 
   @Test
-  void whenGivenIdIsNullThenShouldThrowIllegalArgumentException() {
+  void givenStudentIdWhenIsNullThenShouldThrowIllegalArgumentException() {
     var exception = assertThrows(
       IllegalArgumentException.class,
       () -> sut.deleteById(ID_NULL)
