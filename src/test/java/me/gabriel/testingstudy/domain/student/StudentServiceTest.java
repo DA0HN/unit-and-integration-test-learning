@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static me.gabriel.testingstudy.domain.student.StudentFactory.makeStudent;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -106,12 +107,10 @@ class StudentServiceTest {
 
   @Test
   void givenStudentIdWhenIsNullThenShouldThrowIllegalArgumentException() {
-    var exception = assertThrows(
-      IllegalArgumentException.class,
+    assertThatThrownBy(
       () -> sut.deleteById(ID_NULL)
-    );
+    ).hasMessageContaining("Id " + ID_NULL + " cannot be null");
 
-    assertThat(exception).hasMessage("Id " + ID_NULL + " cannot be null");
     verifyNoInteractions(studentRepository);
   }
 }
