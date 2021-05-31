@@ -1,8 +1,8 @@
 package me.gabriel.testingstudy.domain.student;
 
 import lombok.AllArgsConstructor;
-import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException;
 import me.gabriel.testingstudy.domain.student.exception.EmailAlreadyInUseException;
+import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +33,10 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override public void deleteById(Long id) throws StudentNotFoundException {
+
+    if(id == null) {
+      throw new IllegalArgumentException("Id " + id + " cannot be null");
+    }
 
     if(!repository.existsById(id)) {
       throw new StudentNotFoundException("Student with id " + id + " does not exists");
