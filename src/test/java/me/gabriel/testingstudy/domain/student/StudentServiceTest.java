@@ -107,9 +107,9 @@ class StudentServiceTest {
 
   @Test
   void givenStudentIdWhenIsNullThenShouldThrowIllegalArgumentException() {
-    assertThatThrownBy(
-      () -> sut.deleteById(ID_NULL)
-    ).hasMessageContaining("Id " + ID_NULL + " cannot be null");
+    assertThatThrownBy(() -> sut.deleteById(ID_NULL))
+      .isInstanceOf(IllegalArgumentException.class)
+      .hasMessageContaining("Id " + ID_NULL + " cannot be null");
 
     verifyNoInteractions(studentRepository);
   }
