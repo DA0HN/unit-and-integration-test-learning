@@ -2,7 +2,7 @@ package me.gabriel.testingstudy.domain.student;
 
 public class StudentFactory {
 
-  static Student makeStudent() {
+  static Student createValidStudent() {
     return new Student(
       "name",
       "email@email.com",

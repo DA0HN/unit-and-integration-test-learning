@@ -9,7 +9,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static me.gabriel.testingstudy.domain.student.StudentFactory.makeStudent;
+import static me.gabriel.testingstudy.domain.student.StudentFactory.createValidStudent;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -49,7 +49,7 @@ class StudentServiceTest {
 
   @Test
   void givenStudentWhenHasUnregisteredEmailThenShouldBeCreated() {
-    var student = makeStudent();
+    var student = createValidStudent();
 
     when(studentRepository.isEmailAlreadyInUse(anyString())).thenReturn(false);
 
@@ -67,7 +67,7 @@ class StudentServiceTest {
   @Test
   void givenStudentWhenHaveRegisteredEmailThenShouldThrowEmailAlreadyInUseException() {
 
-    var student = makeStudent();
+    var student = createValidStudent();
 
     when(studentRepository.isEmailAlreadyInUse(anyString())).thenReturn(true);
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static me.gabriel.testingstudy.domain.student.StudentFactory.makeStudent;
+import static me.gabriel.testingstudy.domain.student.StudentFactory.createValidStudent;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
@@ -27,7 +27,7 @@ class StudentRepositoryTest {
   @Test
   void itShouldCheckIfStudentEmailAlreadyRegistered() {
 
-    var student = makeStudent();
+    var student = createValidStudent();
 
     sut.save(student);
 
@@ -39,7 +39,7 @@ class StudentRepositoryTest {
   @Test
   void itShouldCheckIfStudentEmailIsNotRegistered() {
 
-    var student = makeStudent();
+    var student = createValidStudent();
 
     var isEmailRegistered = sut.isEmailAlreadyInUse(student.getEmail());
 
