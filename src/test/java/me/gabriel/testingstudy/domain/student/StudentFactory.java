@@ -1,6 +1,6 @@
 package me.gabriel.testingstudy.domain.student;
 
-public class StudentFactory {
+class StudentFactory {
 
   static Student createValidStudent() {
     return new Student(
