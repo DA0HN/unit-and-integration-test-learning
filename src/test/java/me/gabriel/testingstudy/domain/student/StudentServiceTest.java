@@ -1,6 +1,7 @@
 package me.gabriel.testingstudy.domain.student;
 
 import me.gabriel.testingstudy.domain.student.exception.EmailAlreadyInUseException;
+import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,10 +14,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by daohn on 30/05/2021
@@ -30,6 +28,9 @@ class StudentServiceTest {
   private StudentRepository studentRepository;
 
   private StudentService sut;
+  private static final Long ID_VALID = 1L;
+  private static final Long ID_INVALID = -1L;
+  private static final Long ID_NULL = null;
 
   @BeforeEach
   void setUp() {
@@ -78,6 +79,38 @@ class StudentServiceTest {
   }
 
   @Test
-  void deleteById() {
+  void whenGivenIdIsValidThenShouldDeleteStudent() {
+    when(studentRepository.existsById(ID_VALID)).thenReturn(true);
+
+    sut.deleteById(ID_VALID);
+
+    verify(studentRepository, times(1)).existsById(ID_VALID);
+    verify(studentRepository, times(1)).deleteById(ID_VALID);
+  }
+
+  @Test
+  void whenGivenIdIsNotValidThenShouldThrowStudentNotFoundException() {
+
+    when(studentRepository.existsById(ID_INVALID)).thenReturn(false);
+
+    var exception = assertThrows(
+      StudentNotFoundException.class,
+      () -> sut.deleteById(ID_INVALID)
+    );
+
+    assertThat(exception).hasMessage("Student with id " + ID_INVALID + " does not exists");
+    verify(studentRepository, times(1)).existsById(ID_INVALID);
+    verify(studentRepository, never()).deleteById(ID_INVALID);
+  }
+
+  @Test
+  void whenGivenIdIsNullThenShouldThrowIllegalArgumentException() {
+    var exception = assertThrows(
+      IllegalArgumentException.class,
+      () -> sut.deleteById(ID_NULL)
+    );
+
+    assertThat(exception).hasMessage("Id " + ID_NULL + " cannot be null");
+    verifyNoInteractions(studentRepository);
   }
 }
