@@ -25,7 +25,7 @@ class StudentRepositoryTest {
   }
 
   @Test
-  void itShouldCheckIfStudentEmailAlreadyRegistered() {
+  void givenStudentEmailWhenRegisteredThenShouldReturnTrue() {
 
     var student = createValidStudent();
 
@@ -37,7 +37,7 @@ class StudentRepositoryTest {
   }
 
   @Test
-  void itShouldCheckIfStudentEmailIsNotRegistered() {
+  void givenStudentEmailWhenUnregisteredThenShouldReturnFalse() {
 
     var student = createValidStudent();
 
