@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override public void create(Student student) throws EmailAlreadyInUseException {
-    var isEmailInUse = repository.isEmailAlreadyInUse(student.getEmail());
+    boolean isEmailInUse = repository.isEmailAlreadyInUse(student.getEmail());
 
     if(isEmailInUse) {
       throw new EmailAlreadyInUseException("Email " + student.getEmail() + " already in use.");

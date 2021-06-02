@@ -2,7 +2,6 @@ package me.gabriel.testingstudy.domain.student;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -59,7 +58,7 @@ public class Student {
   @Override public boolean equals(Object o) {
     if(this == o) return true;
     if(o == null || getClass() != o.getClass()) return false;
-    Student student = (Student) o;
+    var student = (Student) o;
     return id.equals(student.id);
   }
 
