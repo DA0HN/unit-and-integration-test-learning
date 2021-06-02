@@ -9,4 +9,12 @@ class StudentFactory {
       Gender.OTHER
     );
   }
+
+  public static StudentDto createValidStudentDto() {
+    return new StudentDto(
+      "name",
+      "email@email.com",
+      "OTHER"
+    );
+  }
 }
