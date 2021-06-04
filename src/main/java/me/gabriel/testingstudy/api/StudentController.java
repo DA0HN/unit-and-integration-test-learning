@@ -1,7 +1,7 @@
 package me.gabriel.testingstudy.api;
 
 import lombok.AllArgsConstructor;
-import me.gabriel.testingstudy.domain.student.Student;
+import me.gabriel.testingstudy.domain.student.StudentDto;
 import me.gabriel.testingstudy.domain.student.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +29,13 @@ public class StudentController {
   private final StudentService service;
 
   @GetMapping
-  public ResponseEntity<List<Student>> findAll() {
+  public ResponseEntity<List<StudentDto>> findAll() {
     var students = service.findAll();
     return ResponseEntity.ok(students);
   }
 
   @PostMapping
-  public ResponseEntity<Void> create(@Valid @RequestBody Student student) {
+  public ResponseEntity<Void> create(@Valid @RequestBody StudentDto student) {
     service.create(student);
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }

@@ -11,7 +11,7 @@ import java.util.List;
  * @since 30/05/2021
  */
 public interface StudentService {
-  List<Student> findAll();
-  void create(Student student) throws EmailAlreadyInUseException;
+  List<StudentDto> findAll();
+  StudentDto create(StudentDto student) throws EmailAlreadyInUseException;
   void deleteById(Long id) throws StudentNotFoundException;
 }

@@ -6,6 +6,7 @@ import me.gabriel.testingstudy.domain.student.exception.StudentNotFoundException
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by daohn on 30/05/2021
@@ -17,19 +18,27 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
   private final StudentRepository repository;
+  private final StudentMapper mapper;
 
-  @Override public List<Student> findAll() {
-    return repository.findAll();
+  @Override public List<StudentDto> findAll() {
+    return repository.findAll()
+             .stream()
+             .map(mapper::fromStudentEntityToStudentDto)
+             .collect(Collectors.toList());
   }
 
-  @Override public void create(Student student) throws EmailAlreadyInUseException {
+  @Override public StudentDto create(StudentDto studentDto) throws EmailAlreadyInUseException {
+    var student = mapper.fromStudentDtoToStudentEntity(studentDto);
+
     boolean isEmailInUse = repository.isEmailAlreadyInUse(student.getEmail());
 
     if(isEmailInUse) {
       throw new EmailAlreadyInUseException("Email " + student.getEmail() + " already in use.");
     }
 
-    repository.save(student);
+    var savedStudent = repository.save(student);
+
+    return mapper.fromStudentEntityToStudentDto(savedStudent);
   }
 
   @Override public void deleteById(Long id) throws StudentNotFoundException {
