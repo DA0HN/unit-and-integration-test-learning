@@ -29,22 +29,22 @@
             <td><pre>/api/v1/school-system/students</pre></td>
             <td><strong>GET</strong></td>
             <td><pre>
-                {
-                  "name" : "Vincent",
-                  "email" : "TheHappyJock@outlook.co",
-                  "gender" : "MALE"
-                }
+{
+  "name" : "Vincent",
+  "email" : "TheHappyJock@outlook.co",
+  "gender" : "MALE"
+}
             </pre></td>
         </tr>
         <tr>
             <td><pre>/api/v1/school-system/students</pre></td>
             <td><strong>POST</strong></td>
             <td><pre>
-                {
-                  "name" : "Vincent",
-                  "email" : "TheHappyJock@outlook.co",
-                  "gender" : "MALE"
-                }
+{
+  "name" : "Vincent",
+  "email" : "TheHappyJock@outlook.co",
+  "gender" : "MALE"
+}
             </pre></td>
         </tr>
         <tr>
@@ -54,10 +54,3 @@
         </tr>
     </tbody>
 </table>
-
-
-[comment]: <> (| Endpoint                           | Verbo HTTP | Retorno |)
-
-[comment]: <> (|------------------------------------|------------|---------|)
-
-[comment]: <> (|```/api/v1/school-system/students```||)
