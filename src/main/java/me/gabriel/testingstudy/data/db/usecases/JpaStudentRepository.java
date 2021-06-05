@@ -1,4 +1,4 @@
-package me.gabriel.testingstudy.data.db.repositories;
+package me.gabriel.testingstudy.data.db.usecases;
 
 import me.gabriel.testingstudy.data.db.entities.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package me.gabriel.testingstudy.data.db.mappers;
+package me.gabriel.testingstudy.data.db.usecases;
 
 import me.gabriel.testingstudy.core.domain.Student;
 import me.gabriel.testingstudy.data.db.entities.StudentEntity;

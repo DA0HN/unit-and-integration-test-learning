@@ -3,6 +3,7 @@ package me.gabriel.testingstudy.data.db.mappers;
 import lombok.AllArgsConstructor;
 import me.gabriel.testingstudy.core.domain.Student;
 import me.gabriel.testingstudy.data.db.entities.StudentEntity;
+import me.gabriel.testingstudy.data.db.usecases.StudentMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @AllArgsConstructor
-public class StudentMapperImpl implements StudentMapper {
+public class StudentMapperAdapter implements StudentMapper {
 
   private final ModelMapper mapper;
 

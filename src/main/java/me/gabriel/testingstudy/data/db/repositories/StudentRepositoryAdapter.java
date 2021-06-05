@@ -3,7 +3,8 @@ package me.gabriel.testingstudy.data.db.repositories;
 import lombok.AllArgsConstructor;
 import me.gabriel.testingstudy.core.domain.Student;
 import me.gabriel.testingstudy.core.usecases.student.StudentRepository;
-import me.gabriel.testingstudy.data.db.mappers.StudentMapper;
+import me.gabriel.testingstudy.data.db.usecases.StudentMapper;
+import me.gabriel.testingstudy.data.db.usecases.JpaStudentRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

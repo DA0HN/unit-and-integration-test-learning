@@ -1,7 +1,6 @@
 package me.gabriel.testingstudy.data.db.mappers;
 
-import me.gabriel.testingstudy.data.db.mappers.StudentMapper;
-import me.gabriel.testingstudy.data.db.mappers.StudentMapperImpl;
+import me.gabriel.testingstudy.data.db.usecases.StudentMapper;
 import me.gabriel.testingstudy.utils.StudentFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @since 01/06/2021
  */
 @ExtendWith(SpringExtension.class)
-class StudentEntityMapperTest {
+class StudentMapperTest {
 
   private StudentMapper studentMapper;
 
   @BeforeEach
   void setUp() {
-    this.studentMapper = new StudentMapperImpl(new ModelMapper());
+    this.studentMapper = new StudentMapperAdapter(new ModelMapper());
   }
 
   @Test

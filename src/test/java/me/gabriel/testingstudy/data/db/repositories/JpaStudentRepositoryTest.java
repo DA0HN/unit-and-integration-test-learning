@@ -1,6 +1,6 @@
 package me.gabriel.testingstudy.data.db.repositories;
 
-import me.gabriel.testingstudy.data.db.repositories.JpaStudentRepository;
+import me.gabriel.testingstudy.data.db.usecases.JpaStudentRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package me.gabriel.testingstudy.presenter.config;
 
 import me.gabriel.testingstudy.core.usecases.student.StudentRepository;
-import me.gabriel.testingstudy.data.db.mappers.StudentMapper;
-import me.gabriel.testingstudy.data.db.mappers.StudentMapperImpl;
-import me.gabriel.testingstudy.data.db.repositories.JpaStudentRepository;
+import me.gabriel.testingstudy.data.db.usecases.StudentMapper;
+import me.gabriel.testingstudy.data.db.mappers.StudentMapperAdapter;
+import me.gabriel.testingstudy.data.db.usecases.JpaStudentRepository;
 import me.gabriel.testingstudy.data.db.repositories.StudentRepositoryAdapter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -25,7 +25,7 @@ public class StudentDataModule {
 
   @Bean
   public StudentMapper studentMapper(ModelMapper modelMapper) {
-    return new StudentMapperImpl(modelMapper);
+    return new StudentMapperAdapter(modelMapper);
   }
 
   @Bean
