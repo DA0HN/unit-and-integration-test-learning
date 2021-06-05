@@ -25,6 +25,7 @@ public class StudentDomainModule {
     return new DeleteStudentByIdUseCase(studentRepository);
   }
 
+  @Bean
   public FindAllStudentUseCase findAllStudentUseCase(StudentRepository studentRepository) {
     return new FindAllStudentUseCase(studentRepository);
   }
