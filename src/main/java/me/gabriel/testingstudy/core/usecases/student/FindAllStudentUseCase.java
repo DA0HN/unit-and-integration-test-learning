@@ -7,6 +7,9 @@ import me.gabriel.testingstudy.core.usecases.UseCase;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
+
 /**
  * Created by daohn on 04/06/2021
  * @author daohn
@@ -18,7 +21,10 @@ public class FindAllStudentUseCase implements UseCase<FindAllStudentUseCase.Inpu
   private final StudentRepository studentRepository;
 
   @Override public OutputValue handle(InputValue input) {
-    return new OutputValue(studentRepository.findAll());
+    // new OutputValue(studentRepository.findAll());
+    return studentRepository.findAll()
+             .stream()
+             .collect(collectingAndThen(toList(), OutputValue::new));
   }
 
   @Value
