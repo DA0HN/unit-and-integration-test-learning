@@ -1,9 +1,10 @@
-package me.gabriel.testingstudy.domain.student;
+package me.gabriel.testingstudy.data.db.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import me.gabriel.testingstudy.core.domain.Gender;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @Table(name = "student")
-public class Student {
+public class StudentEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +50,7 @@ public class Student {
   @Column(nullable = false)
   private Gender gender;
 
-  public Student(String name, String email, Gender gender) {
+  public StudentEntity(String name, String email, Gender gender) {
     this.name = name;
     this.email = email;
     this.gender = gender;
@@ -58,7 +59,7 @@ public class Student {
   @Override public boolean equals(Object o) {
     if(this == o) return true;
     if(o == null || getClass() != o.getClass()) return false;
-    var student = (Student) o;
+    var student = (StudentEntity) o;
     return id.equals(student.id);
   }
 

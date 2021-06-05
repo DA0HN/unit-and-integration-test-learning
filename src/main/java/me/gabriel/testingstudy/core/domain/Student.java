@@ -1,4 +1,4 @@
-package me.gabriel.testingstudy.domain.student;
+package me.gabriel.testingstudy.core.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -18,7 +18,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentDto {
+public class Student {
   private String name;
   private String email;
   private String gender;
