@@ -14,6 +14,13 @@
         - [Typescript, TDD e Clean Architecture playlist by Mango](https://www.youtube.com/watch?v=czq_8MsjTJY)
         - [Domain-Driven Refactoring by Jimmy Bogard](https://www.youtube.com/watch?v=_dQRAsVhCqA)
 
+----
+## UML
+
+![IMAGEM](assets/uml_diagram.png)
+
+----
+
 ## Endpoints
 
 <table>
@@ -54,3 +61,5 @@
         </tr>
     </tbody>
 </table>
+
+----
