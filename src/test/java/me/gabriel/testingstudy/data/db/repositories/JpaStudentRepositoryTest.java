@@ -1,11 +1,12 @@
-package me.gabriel.testingstudy.domain.student;
+package me.gabriel.testingstudy.data.db.repositories;
 
+import me.gabriel.testingstudy.data.db.repositories.JpaStudentRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static me.gabriel.testingstudy.domain.student.StudentFactory.createValidStudent;
+import static me.gabriel.testingstudy.utils.StudentFactory.createValidStudentEntity;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
@@ -14,10 +15,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  * @since 30/05/2021
  */
 @DataJpaTest
-class StudentRepositoryTest {
+class JpaStudentRepositoryTest {
 
   @Autowired
-  private StudentRepository sut;
+  private JpaStudentRepository sut;
 
   @AfterEach
   void tearDown() {
@@ -27,7 +28,7 @@ class StudentRepositoryTest {
   @Test
   void givenStudentEmailWhenRegisteredThenShouldReturnTrue() {
 
-    var student = createValidStudent();
+    var student = createValidStudentEntity();
 
     sut.save(student);
 
@@ -39,7 +40,7 @@ class StudentRepositoryTest {
   @Test
   void givenStudentEmailWhenUnregisteredThenShouldReturnFalse() {
 
-    var student = createValidStudent();
+    var student = createValidStudentEntity();
 
     var isEmailRegistered = sut.isEmailAlreadyInUse(student.getEmail());
 

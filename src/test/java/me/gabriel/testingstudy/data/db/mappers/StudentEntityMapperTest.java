@@ -1,5 +1,8 @@
-package me.gabriel.testingstudy.domain.student;
+package me.gabriel.testingstudy.data.db.mappers;
 
+import me.gabriel.testingstudy.data.db.mappers.StudentMapper;
+import me.gabriel.testingstudy.data.db.mappers.StudentMapperImpl;
+import me.gabriel.testingstudy.utils.StudentFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * @since 01/06/2021
  */
 @ExtendWith(SpringExtension.class)
-class StudentMapperTest {
+class StudentEntityMapperTest {
 
   private StudentMapper studentMapper;
 
@@ -27,7 +30,7 @@ class StudentMapperTest {
 
   @Test
   void givenStudentDtoWhenIsValidThenShouldConvertToStudentEntity() {
-    var studentDtoConvert = StudentFactory.createValidStudentDto();
+    var studentDtoConvert = StudentFactory.createValidStudent();
 
     var expected = this.studentMapper.fromStudentDtoToStudentEntity(studentDtoConvert);
 
@@ -41,7 +44,7 @@ class StudentMapperTest {
 
   @Test
   void givenStudentWhenIsValidThenShouldConvertToStudentDto() {
-    var studentToConvert = StudentFactory.createValidStudent();
+    var studentToConvert = StudentFactory.createValidStudentEntity();
 
     var expected = this.studentMapper.fromStudentEntityToStudentDto(studentToConvert);
 
