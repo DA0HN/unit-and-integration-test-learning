@@ -17,13 +17,13 @@
 ----
 ## UML
 
-![IMAGEM](assets/uml_diagram.png)
+<img src="assets/uml_diagram.png">
 
 ----
 
 ## Endpoints
 
-<table>
+<table border="0">
     <thead>
         <tr>
             <th>Endpoint</th>
