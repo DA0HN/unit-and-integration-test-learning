@@ -13,7 +13,7 @@
         - [API REST playlist by Rodrigo Branas](https://www.youtube.com/watch?v=yZifRUvxdAk)
         - [Typescript, TDD e Clean Architecture playlist by Mango](https://www.youtube.com/watch?v=czq_8MsjTJY)
         - [Domain-Driven Refactoring by Jimmy Bogard](https://www.youtube.com/watch?v=_dQRAsVhCqA)
-
+        - [Clean Architecture Introduction](https://inforside.com/clean-architecture-introduction/)
 ----
 ## UML
 
