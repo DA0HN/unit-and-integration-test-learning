@@ -1,4 +1,4 @@
-# Spring Boot + Clean Architecture + TDD Study
+# Spring Boot + Clean Architecture + TDD Sandbox
 
 - Projeto criado com o intuito de estudar JUnit e Mockito no ambiente Spring Boot.
     - Implementação foi inspirada no [video](https://www.youtube.com/watch?v=Geq60OVyBPg).
